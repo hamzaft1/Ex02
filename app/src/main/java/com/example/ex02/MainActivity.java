@@ -6,10 +6,12 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     Button btnReinitialiser, btnAfficher, btnQuitter;
+    EditText nbrInsert;
     TextView result;
 
     @SuppressLint("MissingInflatedId")
@@ -20,12 +22,19 @@ public class MainActivity extends AppCompatActivity {
 
         btnReinitialiser = findViewById(R.id.btnReinitialiser);
         btnQuitter = findViewById(R.id.btnQuitter);
+        nbrInsert = findViewById(R.id.nbrInsert);
         result = findViewById(R.id.result);
 
         btnReinitialiser.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("DefaultLocale")
             @Override
             public void onClick(View v) {
-                result.setText("");
+                nbrInsert.setText("");
+                StringBuilder r = new StringBuilder();
+                for (int i = 0; i <= 10 ; i++) {
+                    r.append(String.format("? x %d = ?\n", i));
+                }
+                result.setText(r.toString());
             }
         });
 
