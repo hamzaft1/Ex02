@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         btnReinitialiser = findViewById(R.id.btnReinitialiser);
+        btnAfficher = findViewById(R.id.btnAfficher);
         btnQuitter = findViewById(R.id.btnQuitter);
         nbrInsert = findViewById(R.id.nbrInsert);
         result = findViewById(R.id.result);
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
                 nbrInsert.setText("");
                 StringBuilder r = new StringBuilder();
                 for (int i = 0; i <= 10 ; i++) {
-                    r.append(String.format("? x %d = ?\n", i));
+                    r.append(String.format("? x %d = ? \n", i));
                 }
                 result.setText(r.toString());
             }
@@ -42,6 +43,19 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+
+        btnAfficher.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("DefaultLocale")
+            @Override
+            public void onClick(View v) {
+                int num = Integer.parseInt(nbrInsert.getText().toString());
+                StringBuffer txt = new StringBuffer();
+                for (int i = 0; i <= 10; i++) {
+                    txt.append(String.format("%d * %d = %d \n",num,i,num*i));
+                }
+                result.setText(txt);
             }
         });
     }
