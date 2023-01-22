@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     Button btnReinitialiser, btnAfficher, btnQuitter;
@@ -50,6 +51,11 @@ public class MainActivity extends AppCompatActivity {
             @SuppressLint("DefaultLocale")
             @Override
             public void onClick(View v) {
+                if(nbrInsert.getText().toString().isEmpty()){
+                    Toast.makeText(MainActivity.this, "Veuillez saisir un entier !", Toast.LENGTH_SHORT).show();
+                    btnReinitialiser.callOnClick();
+                    return;
+                }
                 int num = Integer.parseInt(nbrInsert.getText().toString());
                 StringBuffer txt = new StringBuffer();
                 for (int i = 0; i <= 10; i++) {
